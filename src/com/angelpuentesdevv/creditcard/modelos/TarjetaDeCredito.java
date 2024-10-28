@@ -1,6 +1,7 @@
 package com.angelpuentesdevv.creditcard.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TarjetaDeCredito {
 
@@ -8,12 +9,33 @@ public class TarjetaDeCredito {
 
     private double saldo;
 
-    private ArrayList<String> listaDeCompras = new ArrayList<>();
+    private List<Compra> listaDeCompras;
 
-    public TarjetaDeCredito(double limite, double saldo) {
+    public TarjetaDeCredito(double limite) {
         this.limite = limite;
-        this.saldo = saldo;
+        this.saldo = limite;
+        this.listaDeCompras = new ArrayList<>();
     }
 
+    public double getLimite() {
+        return limite;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public List<Compra> getListaDeCompras() {
+        return listaDeCompras;
+    }
+
+    public boolean lanzarCompra(Compra compra){
+        if(this.saldo >= compra.getValor()){
+            this.saldo -= compra.getValor();
+            this.listaDeCompras.add(compra);
+            return true;
+        }
+        return false;
+    }
 
 }
