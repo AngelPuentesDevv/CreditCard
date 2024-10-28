@@ -1,4 +1,4 @@
-package modelos;
+package com.angelpuentesdevv.creditcard.modelos;
 
 public class Compra {
 
